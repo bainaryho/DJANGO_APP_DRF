@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LION_DJANGO_APP.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lion_app.settings')
 
 application = get_wsgi_application()
