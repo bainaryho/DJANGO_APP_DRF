@@ -1,5 +1,3 @@
-
-```
 LION_DJANGO_APP
 ├─ .gitignore
 ├─ docker-compose.yml#Django 프로젝트와 관련된 Docker 서비스들을 정의하여 한 번에 여러 컨테이너를 실행/관리할 수 있도록 도와줍니다.
@@ -26,5 +24,3 @@ LION_DJANGO_APP
    ├─ run_gunicorn.sh
    ├─ set_server.sh
    └─ set_user.sh
-
-```
