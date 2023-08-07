@@ -28,7 +28,7 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
     volumes:
       - "staticfiles:/var/www/html/static"
     env_file:
-      - ./.env
+      - ./prod.env
 
 volumes:
   staticfiles:
