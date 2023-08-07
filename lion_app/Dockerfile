@@ -25,6 +25,10 @@ COPY ./scripts/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
+COPY ./scripts/entrypoint /entrypoint
+RUN sed -i 's/\r$//g' /entrypoint
+RUN chmod +x /entrypoint
+
 # 작업 디렉토리를 앱의 홈 디렉토리로 설정
 WORKDIR ${APP_HOME}
 
