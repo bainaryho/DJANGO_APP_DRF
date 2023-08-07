@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# 장고 사이트 파일 변경
+sed -i "s/\$LOCAL_IP/$LOCAL_IP/g" /etc/nginx/sites-available/django
+service nginx restart
+# 

@@ -27,6 +27,7 @@ DEBUG = True
 
 LOCAL_IP = os.getenv('LOCAL_IP','')
 
+
 ALLOWED_HOSTS = [
     "localhost",
     LOCAL_IP,
