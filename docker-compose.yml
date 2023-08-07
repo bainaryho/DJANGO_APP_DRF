@@ -14,6 +14,8 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
       - "staticfiles:/var/www/html/static" #"staticfiles" 볼륨을 "/var/www/html/static" 디렉토리와 연결
     command:  #컨테이너가 시작될 때 실행할 명령을 지정
       - /start                    # "/start" 명령을 실행하도록 지정
+    env_file:
+      - ./prod.env
 
   nginx: #실행하는 서비스 엔진엑스 컨테이너
     depends_on: #"nginx" 서비스가 실행되기 전에 "lion-app" 서비스가 먼저 실행되도록 의존성을 지정

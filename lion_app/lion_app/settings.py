@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,12 +25,16 @@ SECRET_KEY = 'django-insecure-&vvoc_%f(dy)6=c*r!8=8rnbd!jjw*(to6z($wpt-8ot=bnexq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOCAL_IP = os.getenv('LOCAL_IP','')
+
 ALLOWED_HOSTS = [
     "localhost",
+    LOCAL_IP,
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8888",
+    f"https://{LOCAL_IP}:8888",
 ]
 
 
