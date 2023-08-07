@@ -16,6 +16,10 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
       - "staticfiles:/var/www/html/static" #"staticfiles" 볼륨을 "/var/www/html/static" 디렉토리와 연결
     command:  #컨테이너가 시작될 때 실행할 명령을 지정
       - /start                    # "/start" 명령을 실행하도록 지정
+    env_file:
+      - ./.envs/local/.django
+      - ./.envs/local/.server
+      - ./.envs/local/.db
 
   nginx:
     depends_on:
@@ -30,14 +34,17 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
     volumes:
       - "staticfiles:/var/www/html/static"
     env_file:
-      - ./.env
+      - ./.envs/local/.server
     
   db:
     image: postgres:15
     env_file:
-      - ./.env
+      - ./.envs/local/.db
     ports:
       - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   staticfiles:
+  postgres_data:
