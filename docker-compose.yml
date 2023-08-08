@@ -44,7 +44,15 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
       - "15432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
 
 volumes:
   staticfiles:
   postgres_data:
+  mongo_data:

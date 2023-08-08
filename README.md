@@ -1,25 +1,53 @@
+```
 LION_DJANGO_APP
+├─ .git
 ├─ .gitignore
-├─ docker-compose.yml   #Django 프로젝트와 관련된 Docker 서비스들을 정의하여 한 번에 여러 컨테이너를 실행/관리할 수 있도록 도와줍니다.
-├─ Dockerfile.nginx_ubt       #엔진엑스 빌드 도커파일
+├─ blog
+│  ├─ admin.py
+│  ├─ apps.py
+│  ├─ migrations
+│  │  └─ __init__.py
+│  ├─ models.py
+│  ├─ tests.py
+│  ├─ urls.py
+│  ├─ views.py
+│  └─ __init__.py
+├─ docker-compose.prod.yml
+├─ docker-compose.yml
+├─ Dockerfile.nginx_ubt
 ├─ lion_app
-│  ├─ Dockerfile     #장고 빌드 도커파일
+│  ├─ Dockerfile
 │  ├─ Forum
+│  │  ├─ admin.py
+│  │  ├─ apps.py
+│  │  ├─ migrations
+│  │  │  ├─ 0001_initial.py
+│  │  │  └─ __init__.py
+│  │  ├─ models.py
+│  │  ├─ tests.py
+│  │  ├─ views.py
+│  │  └─ __init__.py
+│  ├─ get-pip.py
 │  ├─ lion_app
-│  │  ├─ asgi.py 
-│  │  ├─ django.nginx      #nginx 서버 블록 설정 파일
-│  │  ├─ gunicorn_config.py      #start scripts에서 실행됨
+│  │  ├─ asgi.py
+│  │  ├─ django.nginx
+│  │  ├─ gunicorn_config.py
 │  │  ├─ settings.py
 │  │  ├─ urls.py
-│  │  └─ wsgi.py
+│  │  ├─ wsgi.py
+│  │  └─ __init__.py
 │  ├─ manage.py
 │  ├─ requirements.txt
-│  └─ scripts   #Django 프로젝트를 Docker컨테이너로 배포하기 위한 스크립트
+│  └─ scripts
+│     ├─ entrypoint
 │     └─ start
 ├─ README.md
-└─ scripts     #Django 프로젝트 배포와 관련된 스크립트들이 위치하는 디렉토리입니다.
+└─ scripts
    ├─ deploy.sh
+   ├─ nginx_entry
    ├─ runserver.sh
    ├─ run_gunicorn.sh
    ├─ set_server.sh
    └─ set_user.sh
+
+```
