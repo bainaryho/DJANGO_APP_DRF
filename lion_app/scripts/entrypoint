@@ -27,3 +27,5 @@ until postgres_ready; do
 done
 #모든 출력 결과물을 표준 에러에다 넣는다.
 >&2 echo "PostgreSQL is available"
+
+exec "$@" #뒤에오는 커멘드 실행

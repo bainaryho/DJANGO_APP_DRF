@@ -37,4 +37,5 @@ RUN if [ -e /var/www/html/static ]; then rm -rf /var/www/html/static; fi
 RUN python manage.py collectstatic -c
 
 # 컨테이너가 실행될 때 수행할 기본 명령을 설정
+ENTRYPOINT [ "/entrypoint" ]
 CMD [ "python", "--version" ]
