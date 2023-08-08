@@ -2,6 +2,8 @@ version: '3'
 
 services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
   lion-app:   #Django 애플리케이션을 실행하기 위한 서비스 설정
+    depends_on:
+      - db
     container_name: lion-app-dc   #Docker 컨테이너의 이름을 지정
     build:    #Docker 이미지를 빌드할 때 사용되는 설정을 지정
       context: lion_app           #"lion_app" 디렉토리를 Docker 빌드 컨텍스트로 지정
@@ -14,6 +16,10 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
       - "staticfiles:/var/www/html/static" #"staticfiles" 볼륨을 "/var/www/html/static" 디렉토리와 연결
     command:  #컨테이너가 시작될 때 실행할 명령을 지정
       - /start                    # "/start" 명령을 실행하도록 지정
+    env_file:
+      - ./.envs/local/.django
+      - ./.envs/local/.server
+      - ./.envs/local/.db
 
   nginx:
     depends_on:
@@ -28,7 +34,17 @@ services:     #Docker Compose로 실행하고자 하는 서버스들을 정의
     volumes:
       - "staticfiles:/var/www/html/static"
     env_file:
-      - ./.env
+      - ./.envs/local/.server
+    
+  db:
+    image: postgres:15
+    env_file:
+      - ./.envs/local/.db
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   staticfiles:
+  postgres_data:

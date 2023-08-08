@@ -25,6 +25,10 @@ COPY ./scripts/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
+COPY ./scripts/entrypoint /entrypoint
+RUN sed -i 's/\r$//g' /entrypoint
+RUN chmod +x /entrypoint
+
 # 작업 디렉토리를 앱의 홈 디렉토리로 설정
 WORKDIR ${APP_HOME}
 
@@ -33,4 +37,5 @@ RUN if [ -e /var/www/html/static ]; then rm -rf /var/www/html/static; fi
 RUN python manage.py collectstatic -c
 
 # 컨테이너가 실행될 때 수행할 기본 명령을 설정
+ENTRYPOINT [ "/entrypoint" ]
 CMD [ "python", "--version" ]
