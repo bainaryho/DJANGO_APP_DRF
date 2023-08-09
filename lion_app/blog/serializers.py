@@ -1,7 +1,10 @@
+import os
+
 from pymongo import MongoClient
 from rest_framework import serializers
 
-client = MongoClient(host="mongo")
+MONGO_HOST = os.getenv("MONGO_HOST", "mongo")
+client = MongoClient(host=MONGO_HOST)
 db = client.likelion
 
 class BlogSerializer(serializers.Serializer):
