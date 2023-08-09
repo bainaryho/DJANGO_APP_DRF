@@ -59,7 +59,7 @@ INSTALLED_APPS += [
 ## Created Apps
 INSTALLED_APPS += [
     'Forum',
-    'blog',
+    #'blog', 사용 안하는 앱리소스 관리
 ]
 
 MIDDLEWARE = [
@@ -97,15 +97,17 @@ WSGI_APPLICATION = 'lion_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB','postgres'),
-        'USER': os.getenv('POSTGRES_USER','postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD','postgres'),
-        'HOST': os.getenv('DB_HOST','db'), #db컨테이너를 찾아서 연결을 시도.
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': os.getenv('POSTGRES_DB', 'postgres'),
+         'USER': os.getenv('POSTGRES_USER', 'postgres'),
+         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
+         'HOST': os.getenv('DB_HOST', 'db'),
+         'OPTIONS': {
+             'options': '-c search_path=likelion,public',
+         },
+     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

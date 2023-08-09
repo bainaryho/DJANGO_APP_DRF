@@ -32,10 +32,6 @@ RUN chmod +x /entrypoint
 # 작업 디렉토리를 앱의 홈 디렉토리로 설정
 WORKDIR ${APP_HOME}
 
-# 이미 존재하는 경우 정적 파일 디렉토리를 제거하고 collectstatic을 실행
-RUN if [ -e /var/www/html/static ]; then rm -rf /var/www/html/static; fi
-RUN python manage.py collectstatic -c
-
 # 컨테이너가 실행될 때 수행할 기본 명령을 설정
 ENTRYPOINT [ "/entrypoint" ]
 CMD [ "python", "--version" ]
