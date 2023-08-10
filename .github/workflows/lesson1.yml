@@ -16,14 +16,12 @@ jobs:
           run: echo "url:${{github.repositoryUrl}}"
 
 
-    docker-compose-build:
-        name: docker compose build
+    docker-build:
+        name: docker build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-            - name: list files
-              run: ls -al
-            #- name: run docker-compose-build
-            #  run: docker-compose build
             - name: Build Lion Image
-              run: docker build -t lion-app .
+              run: |
+                cd lion_app
+                docker build --tag lion-app
