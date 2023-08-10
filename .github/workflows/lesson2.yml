@@ -19,6 +19,6 @@ jobs:
                 password: ${{ secrets.PASSWORD }}
                 script: |
                     cd DJANGO_APP_DRF
-                    git pull
+                    git pull -f origin master
                     docker-compose -f docker-compose.prod.yml restart lion-app
 
