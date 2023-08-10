@@ -7,7 +7,7 @@ on:
 jobs:
     echo-event:
         name: echo event
-        runs-on: windows-latest  # 윈도우 환경에서 실행하도록 변경
+        runs-on: ubuntu-latest 
 
         steps:
         - name: Get Event
@@ -18,9 +18,8 @@ jobs:
 
     docker-compose-build:
         name: docker compose build
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
             - name: list files
               run: ls -al
-              
