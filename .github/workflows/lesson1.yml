@@ -5,12 +5,22 @@ on:
   pull_request:
 
 jobs:
-  echo-event:
-    name: echo event
-    runs-on: windows-latest  # 윈도우 환경에서 실행하도록 변경
+    echo-event:
+        name: echo event
+        runs-on: windows-latest  # 윈도우 환경에서 실행하도록 변경
 
-    steps:
-      - name: Get Event
-        run: echo "This event is ${{github.event_name}}"
-      - name: echo github context
-        run: echo "url:${{github.repositoryUrl}}"
+        steps:
+        - name: Get Event
+          run: echo "This event is ${{github.event_name}}"
+        - name: echo github context
+          run: echo "url:${{github.repositoryUrl}}"
+
+
+    docker-compose-build:
+        name: docker compose build
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: list files
+              run: ls -al
+              
