@@ -10,6 +10,7 @@ services:
     ports:
       - 8000:8000
     volumes:
+      - ~/.aws:/home/lion/.aws:ro
       - ./lion_app:/app
       - "staticfiles:/var/www/html/static"
     command:
@@ -18,6 +19,8 @@ services:
       - ./.envs/prod/django
       - ./.envs/prod/db
       - ./.envs/prod/server
+    environment:
+      - AWS_SECRET_NAME=like/lion/prod
 
   nginx:
     depends_on:

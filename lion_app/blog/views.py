@@ -36,24 +36,24 @@ class BlogViewSet(ViewSet):
     def destroy(self, request):
         ...
 
-def create_blog(request) -> bool:
-    blog = {
-        "title": "My second blog",
-        "content": "This is my second blog",
-        "author": "lion",
-    }
-    try:
-        db.blogs.insert_one(blog)
-        return True
-    except Exception as e:
-        print(e)
-        return False
+    def create_blog(request) -> bool:
+        blog = {
+            "title": "My second blog",
+            "content": "This is my second blog",
+            "author": "lion",
+        }
+        try:
+            db.blogs.insert_one(blog)
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
-def update_blog():
-    ...
+    def update_blog():
+        ...
 
-def delete_blog():
-    ...
+    def delete_blog():
+        ...
 
-def read_blog():
-    ...
+    def read_blog():
+        ...

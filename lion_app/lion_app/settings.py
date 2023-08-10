@@ -53,12 +53,13 @@ INSTALLED_APPS = [
 ## Third party Apps
 INSTALLED_APPS += [
     'rest_framework',
+    'drf_spectacular',
 ]
 
 ## Created Apps
 INSTALLED_APPS += [
     'Forum',
-    'blog',
+    #'blog', 사용 안하는 앱리소스 관리
 ]
 
 MIDDLEWARE = [
@@ -96,6 +97,7 @@ WSGI_APPLICATION = 'lion_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB','postgres'),
@@ -106,8 +108,19 @@ DATABASES = {
             'options': '-c search_path=likelion,public',
         },
     }
+=======
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': os.getenv('POSTGRES_DB', 'postgres'),
+         'USER': os.getenv('POSTGRES_USER', 'postgres'),
+         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
+         'HOST': os.getenv('DB_HOST', 'db'),
+         'OPTIONS': {
+             'options': '-c search_path=likelion,public',
+         },
+     }
+>>>>>>> 9b2470af8aa37b63e671f77822fa0c220730aadc
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,3 +163,19 @@ STATIC_ROOT = '/var/www/html/static'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'LikeLion Forum API',
+    'DESCRIPTION': 'Likelion 6th',
+    'VERSION': '0.0.1',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
