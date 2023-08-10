@@ -18,6 +18,6 @@ jobs:
                 username: ${{ secrets.USERNAME }}
                 password: ${{ secrets.PASSWORD }}
                 script: |
-                    cd lion_django_app
+                    cd django_app_drf
                     git pull
 
