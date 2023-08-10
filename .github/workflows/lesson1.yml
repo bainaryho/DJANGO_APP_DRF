@@ -21,7 +21,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-            - name: Build Lion Image
+            - name: build
+              working-directory: lion_app
               run: |
-                cd lion_app
-                docker build --tag lion-app
+                docker build --tag lion-app .
+            - name: docker images
+              run: docker images lion-app
