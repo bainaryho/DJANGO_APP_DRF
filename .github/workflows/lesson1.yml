@@ -1,14 +1,14 @@
 name: lesson1
 
 on:
-    push:
-    pull_request:
-        
+  push:
+  pull_request:
+
 jobs:
-    echo-event:
-        name: echo event
-        runs-on: utuntu-latest
-        steps:
-            - name: get event
-              run: echo "Thois event is ${{github.event_name}}"
-              
+  echo-event:
+    name: echo event
+    runs-on: windows-latest  # 윈도우 환경에서 실행하도록 변경
+
+    steps:
+      - name: Get Event
+        run: echo "This event is ${{github.event_name}}"
