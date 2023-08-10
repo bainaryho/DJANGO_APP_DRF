@@ -3,7 +3,7 @@ name: CD
 on:
     push:
         branches:
-            - 'main'
+            - 'master'
 
 jobs:
     deployment:
@@ -21,4 +21,3 @@ jobs:
                     cd lion_django_app
                     git pull
 
-                    
