@@ -1,0 +1,14 @@
+name: lesson1
+
+on:
+    push:
+    pull_request:
+        
+jobs:
+    echo-event:
+        name: echo event
+        runs-on: utuntu-latest
+        steps:
+            - name: get event
+              run: echo "Thois event is ${{github.event_name}}"
+              
