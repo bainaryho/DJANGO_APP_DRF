@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8888",
-    f"https://{LOCAL_IP}:8888",
+    f"http://{LOCAL_IP}:8888",
 ]
 
 
@@ -97,6 +97,18 @@ WSGI_APPLICATION = 'lion_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB','postgres'),
+        'USER': os.getenv('POSTGRES_USER','postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD','postgres'),
+        'HOST': os.getenv('DB_HOST','db'), #DB_HOST가 없으면 db로 지정.있으니까 괜찮다
+        'OPTIONS': {
+            'options': '-c search_path=likelion,public',
+        },
+    }
+=======
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': os.getenv('POSTGRES_DB', 'postgres'),
@@ -107,6 +119,7 @@ DATABASES = {
              'options': '-c search_path=likelion,public',
          },
      }
+>>>>>>> 9b2470af8aa37b63e671f77822fa0c220730aadc
 }
 
 # Password validation
