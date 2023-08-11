@@ -48,5 +48,7 @@ jobs:
                     ${{ secrets.NCR_REGISTRY }} \
                      -u ${{ secrets.NCR_ACCESS_KEY_ID }} -p ${{ secrets.NCR_SECRET_KEY }}
                     docker pull ${{ env.IMAGE_TAG }}
-                    docker-compose -f docker-compose.prod.yml up -d
+                    #docker-compose -f docker-compose.prod.yml up -d
+                    docker stop lion-app && docker rm lion-app
+                    docker run docker run -p 8000:8000 -d -v ~/.aws:/root/.aws:ro --env-file .envs/prod/django --env-file .envs/prod/db --env-file .envs/prod/server likelion-cr-jh.kr.ncr.ntruss.com/lion-app:latest /start
     
