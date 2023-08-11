@@ -6,6 +6,7 @@ on:
             - 'master'
 
 env:
+    IMAGE: ${{ vars.NCR_REGISTRY }}/lion-app
     IMAGE_TAG: ${{ secrets.NCR_REGISTRY }}/lion-app:latest
 
 jobs:
@@ -24,13 +25,15 @@ jobs:
                 username: ${{ secrets.NCR_ACCESS_KEY_ID }}
                 password: ${{ secrets.NCR_SECRET_KEY }}
             - name: Get Current Timestamp
-              run: echo "timestamp=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+              id: timestamp
+              run: echo "timestamp=$(date '+%s')" >> "$GITHUB_OUTPUT"
+
             - name: Build and Push
               uses: docker/build-push-action@v4
               with:
                 context: lion_app
-                tags: ${{ env.IMAGE_TAG }}
-                push: true
+                tags: ${{ env.IMAGE_TAG }},"${{ env.IMAGE }}:${{ steps.timestamp.outputs.timestamp }}"
+                push: true 
     # Pull Image From NCR / Run new container with new image
     deployment:
         needs: build-and-push
