@@ -6,7 +6,7 @@ on:
             - 'master'
 
 env:
-    IMAGE: ${{ vars.NCR_REGISTRY }}/lion-app
+    IMAGE: ${{ secrets.NCR_REGISTRY }}/lion-app
     IMAGE_TAG: ${{ secrets.NCR_REGISTRY }}/lion-app:latest
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
               with:
                 context: lion_app
                 tags: ${{ env.IMAGE_TAG }},"${{ env.IMAGE }}:${{ steps.timestamp.outputs.timestamp }}"
-                push: true 
+                push: true
     # Pull Image From NCR / Run new container with new image
     deployment:
         needs: build-and-push
