@@ -50,4 +50,9 @@ jobs:
                     docker pull ${{ env.IMAGE_TAG }}
                     #docker-compose -f docker-compose.prod.yml up -d
                     docker stop lion-app && docker rm lion-app
-                    docker run -p 8000:8000 -d -v ~/.aws:/root/.aws:ro --env-file .envs/prod/django --env-file .envs/prod/db --env-file .envs/prod/server likelion-cr-jh.kr.ncr.ntruss.com/lion-app:latest /start
+                    docker run -p 8000:8000 -d --name lion-app \
+                    -v ~/.aws:/root/.aws:ro \
+                    --env-file .envs/prod/django \
+                    --env-file .envs/prod/db --env-file \
+                    .envs/prod/server likelion-cr-jh.kr.ncr.ntruss.com/lion-app:latest \
+                    /start
