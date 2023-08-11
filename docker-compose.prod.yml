@@ -3,10 +3,7 @@ version: '3'
 services:
   lion-app:
     container_name: lion-app-dc
-    build:
-      context: lion_app
-      dockerfile: Dockerfile
-    image: lion-app
+    image: likelion-cr-jh.kr.ncr.ntruss.com/lion-app:latest #이미지 로컬에서 찾아서 사용
     ports:
       - 8000:8000
     volumes:
