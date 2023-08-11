@@ -43,7 +43,7 @@ jobs:
                 username: ${{ secrets.USERNAME }}
                 password: ${{ secrets.PASSWORD }}
                 script: |
-                    cd lion_django_app
+                    cd lion
                     docker login \
                     ${{ secrets.NCR_REGISTRY }} \
                      -u ${{ secrets.NCR_ACCESS_KEY_ID }} -p ${{ secrets.NCR_SECRET_KEY }}
