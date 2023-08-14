@@ -6,7 +6,14 @@ on:
         types:
             - completed
 jobs:
-    echo:
+    on-success:
         runs-on: ubuntu-latest
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         steps:
-            - run: echo "call workflow를 실행함으로 lesson5도 실행합니다"
+            - run: echo "성공"
+        
+    on-failure:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        steps:
+            - run: echo "실패"
