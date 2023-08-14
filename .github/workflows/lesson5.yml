@@ -1,0 +1,12 @@
+name: workflow run
+
+on:
+    workflow_run:
+        workflows: ["call workflow"]
+        types:
+            - completed
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "call workflow를 실행함으로 lesson5도 실행합니다"
