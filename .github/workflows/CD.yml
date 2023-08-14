@@ -3,8 +3,11 @@ name: CD using Docker Image
 on:
     push:
         branches:
-            - 'master'
-
+          - 'master'
+        paths:
+          - .github/workflows/CD.yml
+          - lion_app/**
+          
 env:
     IMAGE: ${{ secrets.NCR_REGISTRY }}/lion-app
     IMAGE_TAG: ${{ secrets.NCR_REGISTRY }}/lion-app:latest
