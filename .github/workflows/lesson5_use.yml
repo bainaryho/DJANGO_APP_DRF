@@ -9,15 +9,15 @@ on:
 jobs:
     download:
         runs-on: ubuntu-latest
-        steps: 
+        steps:
             - uses: actions/github-script@v6
               name: download artifact
               with:
-                script: |
+                  script: |
                     let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        run_id: context.payload.workflow_run.id,
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      run_id: context.payload.workflow_run.id,
                     });
                     let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
                         return artifact.name == "pr_number"
@@ -29,9 +29,8 @@ jobs:
                         archive_format: 'zip',
                     });
                     let fs = require('fs');
-                    let filePath = `${process.env.GITHUB_WORKSPACE}/pr_numbet.zip`
+                    let filePath = `${process.env.GITHUB_WORKSPACE}/pr_number.zip`
                     fs.writeFileSync(filePath, Buffer.from(download.data));
-
             - name: 'Unzip artifact'
               run: unzip pr_number.zip
 
