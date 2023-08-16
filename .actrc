@@ -1,3 +1,4 @@
 --secret-file .act_secret
+-e event.json
 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest
 --container-architecture linux/amd64

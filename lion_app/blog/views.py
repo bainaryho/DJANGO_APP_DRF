@@ -9,12 +9,13 @@ from .serializers import BlogSerializer
 client = MongoClient(host="mongo")
 db = client.likelion
 
+
 class BlogViewSet(ViewSet):
     serializer_class = BlogSerializer
 
     def list(self, request):
         return Response()
-    
+
     def create(self, request):
         """
         request.data = {
@@ -29,10 +30,10 @@ class BlogViewSet(ViewSet):
             return Response(status=status.HTTP_201_CREATED, data=serializer.data)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
-    
+
     def retrieve(self, request):
         ...
-    
+
     def destroy(self, request):
         ...
 
