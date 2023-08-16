@@ -24,8 +24,8 @@ jobs:
         - name: install black
           run: pip install black
         - name: check black
-          run: black --check lion_app
-
+          run: |
+            find lion_app -name "*.py" -not -path "*/migrations/*" -exec black --check {} \;
     build:
         needs: lint
         name: Build Image

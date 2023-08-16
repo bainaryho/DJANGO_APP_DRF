@@ -1,21 +1,41 @@
 ```
 LION_DJANGO_APP
-├─ .git
+├─ .actrc
+├─ .dockerignore
+├─ .github
+│  └─ workflows
+│     ├─ CD.yml
+│     ├─ CI.yml
+│     ├─ lesson1.yml
+│     ├─ lesson2.yml
+│     ├─ lesson4.yml
+│     ├─ lesson4_caller.yml
+│     ├─ lesson5.yml
+│     ├─ lesson5_up.yml
+│     ├─ lesson5_use.yml
+│     └─ output_handling.yml
 ├─ .gitignore
-├─ blog
-│  ├─ admin.py
-│  ├─ apps.py
-│  ├─ migrations
-│  │  └─ __init__.py
-│  ├─ models.py
-│  ├─ tests.py
-│  ├─ urls.py
-│  ├─ views.py
-│  └─ __init__.py
+├─ .vscode
+│  └─ settings.json
 ├─ docker-compose.prod.yml
 ├─ docker-compose.yml
 ├─ Dockerfile.nginx_ubt
+├─ event.json
 ├─ lion_app
+│  ├─ blog
+│  │  ├─ admin.py
+│  │  ├─ apps.py
+│  │  ├─ migrations
+│  │  │  └─ __init__.py
+│  │  ├─ models.py
+│  │  ├─ serializers.py
+│  │  ├─ tests.py
+│  │  ├─ urls.py
+│  │  ├─ views.py
+│  │  └─ __init__.py
+│  ├─ common
+│  │  ├─ aws.py
+│  │  └─ __init__.py
 │  ├─ Dockerfile
 │  ├─ Forum
 │  │  ├─ admin.py
@@ -24,15 +44,21 @@ LION_DJANGO_APP
 │  │  │  ├─ 0001_initial.py
 │  │  │  └─ __init__.py
 │  │  ├─ models.py
+│  │  ├─ serializers.py
 │  │  ├─ tests.py
+│  │  ├─ urls.py
 │  │  ├─ views.py
 │  │  └─ __init__.py
-│  ├─ get-pip.py
 │  ├─ lion_app
 │  │  ├─ asgi.py
 │  │  ├─ django.nginx
 │  │  ├─ gunicorn_config.py
-│  │  ├─ settings.py
+│  │  ├─ settings
+│  │  │  ├─ base.py
+│  │  │  ├─ local.py
+│  │  │  ├─ prod.py
+│  │  │  ├─ staging.py
+│  │  │  └─ __init__.py
 │  │  ├─ urls.py
 │  │  ├─ wsgi.py
 │  │  └─ __init__.py
