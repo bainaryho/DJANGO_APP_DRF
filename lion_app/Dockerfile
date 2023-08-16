@@ -34,4 +34,4 @@ WORKDIR ${APP_HOME}
 
 # 컨테이너가 실행될 때 수행할 기본 명령을 설정
 ENTRYPOINT [ "/entrypoint" ]
-CMD [ "python", "--version" ]
+CMD [ "/start" ]
