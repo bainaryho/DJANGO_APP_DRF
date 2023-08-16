@@ -177,6 +177,7 @@ cython_debug/
 *.env
 .envs/prod/*
 .act_secret
-get-pip.py
-*.get-pip.py
+**/get-pip.py
+.lion_app/get-pip.py
+lion_app/get-pip.py
 # End of https://www.toptal.com/developers/gitignore/api/django
