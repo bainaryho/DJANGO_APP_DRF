@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
-from requests import Response
+from rest_framework.response import Response
 from rest_framework import viewsets, status
 from drf_spectacular.utils import extend_schema
 
