@@ -40,4 +40,14 @@ class PostViewSet(viewsets.ModelViewSet):
                     status=status.HTTP_401_UNAUTHORIZED, data="유저는 해당 토픽에 글을 쓸 권한이 없습니다"
                 )
 
-        return super().create(request, *args, **kwargs)
+        # 부모의 create부분 전부 오버라이드
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            data["owner"] = user
+            res: Post = serializer.create(data)
+            return Response(
+                status=status.HTTP_201_CREATED, data=PostSerializer(res).data
+            )
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)

@@ -38,13 +38,11 @@ class PostTest(APITestCase):
         }
         # 401 -> 권한없는 유저 토픽에 포스트 작성
         self.client.force_login(self.unauthorized_user)
-        data["owner"] = self.authorized_user.pk
         res = self.client.post(reverse("post-list"), data=data)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
         # 201 -> 권한있는 유저 토픽에 포스트 작성
         self.client.force_login(self.authorized_user)
-        data["owner"] = self.authorized_user.pk
         res: HttpResponse = self.client.post(reverse("post-list"), data=data)
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         data = json.loads(res.content)
