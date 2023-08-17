@@ -31,7 +31,7 @@ class PostViewSet(viewsets.ModelViewSet):
         topic = get_object_or_404(Topic, id=topic_id)
         if topic.is_private:
             qs = TopicGroupUser.objects.filter(
-                group__lte=TopicGroupUser.groupChoices.common,
+                group__lte=TopicGroupUser.GroupChoices.common,
                 topic=topic,
                 user=user,
             )
