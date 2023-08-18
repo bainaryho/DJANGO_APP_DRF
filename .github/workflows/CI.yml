@@ -50,3 +50,6 @@ jobs:
                 context: lion_app
                 tags: ${{ env.IMAGE_TAG }},"${{ env.IMAGE }}:${{ steps.timestamp.outputs.timestamp }}"
                 push: false
+
+            - name: RUN Test
+              run: docker-compose exec lion-app python manage.py test
