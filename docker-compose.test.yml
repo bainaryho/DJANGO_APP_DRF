@@ -2,36 +2,26 @@ version: '3'
 
 services:
   lion-app:
-    container_name: lion-app-dc
-    image: likelion-cr-jh.kr.ncr.ntruss.com/lion-app:latest #이미지 로컬에서 찾아서 사용
-    ports:
-      - 8000:8000
-    volumes:
-      - ~/.aws:/home/lion/.aws:ro
-      - "staticfiles:/var/www/html/static"
-    command:
-      - "/start"
-    env_file:
-      - ./.envs/prod/django
-      - ./.envs/prod/db
-      - ./.envs/prod/server
-    environment:
-      - AWS_SECRET_NAME=like/lion/prod
-
-  nginx:
     depends_on:
-      - lion-app
-    container_name: lion-nginx-dc
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx_ubt
-    image: lion-nginx
-    ports:
-      - "8888:80"
-    volumes:
-      - "staticfiles:/var/www/html/static"
+      - db
+    container_name: lion-app-test
+    build: #이미지 대신 빌드해서
+      context: lion_app
+      dockerfile: Dockerfile
+    command:
+      - "/bin/sh"
     env_file:
-      - ./.envs/prod/server
+      - ./.envs/local/django
+      - ./.envs/local/db
+      - ./.envs/local/server
+
+  db:
+    container_name: db-test
+    image: postgres:13
+    env_file:
+      - ./.envs/local/db
+    ports:
+      - 54322:5432
 
 volumes:
   staticfiles:
