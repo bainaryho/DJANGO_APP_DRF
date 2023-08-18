@@ -40,11 +40,9 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-
-@extend_schema(tags=["Post"])
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    @extend_schema(deprecated=True)
+    def list(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_400_BAD_REQUEST, data="Deprecated API")
 
     def create(self, request: Request, *args, **kwargs):
         user = request.user
@@ -69,3 +67,17 @@ class PostViewSet(viewsets.ModelViewSet):
             )
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
+
+    def retrieve(self, request, *args, **kwargs):
+        post: Post = self.get_object()
+        user = request.user
+        # 포스트에 토픽에 대한 권한이 있나 확인
+        topic = post.topic
+
+        if not topic.can_be_access_by(user):
+            return Response(
+                status=status.HTTP_401_UNAUTHORIZED,
+                data="이 유저는 이 포스트를 읽지 못합니다",
+            )
+
+        return super().retrieve(request, *args, **kwargs)
