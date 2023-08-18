@@ -8,6 +8,7 @@ services:
     build: #이미지 대신 빌드해서
       context: lion_app
       dockerfile: Dockerfile
+    command: /start
     env_file:
       - ./.envs/local/django
       - ./.envs/local/db
@@ -15,7 +16,7 @@ services:
 
   db:
     container_name: db-test
-    image: postgres:13
+    image: postgres:15
     env_file:
       - ./.envs/local/db
     ports:

@@ -28,7 +28,7 @@ jobs:
             find lion_app -name "*.py" -not -path "*/migrations/*" -exec black --check {} \;
 
     build:
-        # needs: lint
+        needs: lint
         name: Build Image
         runs-on: ubuntu-latest
         steps:
