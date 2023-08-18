@@ -115,9 +115,11 @@ class PostTest(APITestCase):
         res = self.client.get(reverse("post-detail", args=[public_post.pk]))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
-        self.client.force_login(self.unauthorized_user)
-        private_post = Post.objects.filter(topic=self.private_topic).first()
-        res = self.client.get(reverse("post-detail", args=[private_post.pk]))
+        self.client.force_login(self.unauthorized_user)  # 로그인-unauthorized_user
+        private_post = Post.objects.filter(
+            topic=self.private_topic
+        ).first()  # 위에 작성한 Post의 첫번째
+        res = self.client.get(reverse("post-detail", args=[private_post.pk]))  # 음
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
         self.client.force_login(self.authorized_user)
