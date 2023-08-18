@@ -65,8 +65,14 @@ class PostTest(APITestCase):
         self.client.force_login(self.authorized_user)
         res: HttpResponse = self.client.post(reverse("post-list"), data=data)
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
-        data = json.loads(res.content)
-        Post.objects.get(pk=data["id"])
+        res_data = json.loads(res.content)
+        Post.objects.get(pk=res_data["id"])
+
+        # Owner가 쓸수있는지 테스트
+        self.client.force_login(self.superuser)
+        res = self.client.post(reverse("post-list"), data=data)
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        # admin이 쓸수있는지 테스트
 
     def test_read_permission_on_topics(self):
         # read public topic

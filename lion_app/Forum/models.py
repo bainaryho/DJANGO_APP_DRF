@@ -15,8 +15,11 @@ class Topic(models.Model):
         return self.name
 
     def can_be_access_by(self, user: User):
-        members = self.members
-        if not self.is_private or self.members.filter(user=user).exists():
+        if (
+            not self.is_private
+            or self.owner == user  # db와 관련없는 2가지 먼저 확인
+            or self.members.filter(user=user).exists()  # db확인해야하는 부분은 뒤로
+        ):
             return True
         return False
 
