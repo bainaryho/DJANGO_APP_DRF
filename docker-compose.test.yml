@@ -8,8 +8,6 @@ services:
     build: #이미지 대신 빌드해서
       context: lion_app
       dockerfile: Dockerfile
-    command:
-      - "/bin/sh"
     env_file:
       - ./.envs/local/django
       - ./.envs/local/db
