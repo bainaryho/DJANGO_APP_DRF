@@ -19,6 +19,13 @@
    }
  }
 
+#  # Create IAM user list로 작성시 data lion_or남기고 주석
+# resource "aws_ian_user" "dev" {
+#   for_each = toset(["monkey", "hippo", "horse"])
+#   name = each.key
+#   path = "/dev/"
+# }
+
 resource "aws_iam_user" "lion" {
   name = "lion-tf"
   path = "/"
@@ -28,7 +35,7 @@ resource "aws_iam_access_key" "lion" {
   user = aws_iam_user.lion.name
 }
 
-data "aws_iam_policy_document" "lion_ro" {
+data "aws_iam_policy_document" "lion_ro" { #이거빼고 다 주석
   statement {
     effect = "Allow"
     actions = ["ec2:Describe*"]
@@ -51,6 +58,7 @@ output "password"{
 }
 
 resource "local_file" "users" {
-  content = "users"
+  content = "${aws_iam_user_login_profile.example.password}"
   filename = "${path.module}/users.txt"
 }
+
