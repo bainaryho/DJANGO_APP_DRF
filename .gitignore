@@ -178,6 +178,7 @@ cython_debug/
 **/get-pip.py
 .lion_app/get-pip.py
 lion_app/get-pip.py
+.bash_profile
 
 # Local .terraform directories
 **/.terraform/*
@@ -206,3 +207,5 @@ override.tf.json
 
 # lock file
 .terraform.lock.hcl
+bash_profile
+.envs/local/db
