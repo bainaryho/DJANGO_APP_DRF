@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = "django-insecure-&vvoc_%f(dy)6=c*r!8=8rnbd!jjw*(to6z($wpt-8ot=bnexq"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 LOCAL_IP = os.getenv("LOCAL_IP", "")
 
@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8888",
     "http://lion-lb-18904310-af56000f5c59.kr.lb.naverncp.com",
+    "http://be-prod-lb-staging-19158776-abf59d103840.kr.lb.naverncp.com"
     # f"http://{LOCAL_IP}:8888",
 ]
 
