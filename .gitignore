@@ -210,3 +210,4 @@ override.tf.json
 bash_profile
 .envs/local/db
 infra/aws/users.txt
+scripts/set_be_server.sh

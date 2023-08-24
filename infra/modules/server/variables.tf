@@ -46,3 +46,7 @@ variable "django_secret" {
 variable "env" {
   type = string
 }
+
+variable "vpc_id" {
+  type = string
+}
