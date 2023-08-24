@@ -4,8 +4,8 @@
 # 이미 존재하는 경우 정적 파일 디렉토리를 제거하고 collectstatic을 실행
 
 echo "ok ok ok"
-#python manage.py collectstatic --no-input
-python manage.py migrate
+python manage.py collectstatic --no-input
+python manage.py migrate#
 
 # Gunicorn을 사용하여 Django 애플리케이션 실행
 # lion_app.wsgi:application은 Gunicorn이 WSGI 서버로 실행할 Django 애플리케이션의 엔트리 포인트를 지정합니다.
