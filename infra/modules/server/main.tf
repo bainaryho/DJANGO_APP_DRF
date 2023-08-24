@@ -47,7 +47,7 @@ resource "ncloud_public_ip" "db" {
 
 #### server
 resource "ncloud_login_key" "loginkey" {
-    key_name = "lion-test-key-${var.env}"
+    key_name = "lion-tf-key-${var.env}"
 }
 
 #be ACG 설정

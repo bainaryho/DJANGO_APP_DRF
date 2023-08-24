@@ -36,7 +36,7 @@ module "servers"{
     db_user = var.db_user
     db_password = var.db_password
     django_secret = var.django_secret
-    django_settings_module = "lion.app.settings.prod"
+    django_settings_module = "lion_app.settings.prod"
     access_key = var.access_key
     secret_key = var.secret_key
     username = var.username
