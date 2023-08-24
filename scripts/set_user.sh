@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USERNAME="lian"
+USERNAME="lion"
 PASSWORD=
 
 # getopts 로 전달 받아서 작업 수행
