@@ -4,7 +4,7 @@
 # 이미 존재하는 경우 정적 파일 디렉토리를 제거하고 collectstatic을 실행
 
 echo "ok ok ok"
-python manage.py collectstatic --no-input
+#python manage.py collectstatic --no-input
 python manage.py migrate
 
 # Gunicorn을 사용하여 Django 애플리케이션 실행
