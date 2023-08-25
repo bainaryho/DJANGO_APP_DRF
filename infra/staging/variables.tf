@@ -46,3 +46,19 @@ variable "django_secret" {
 variable "env" {
   type = string
 }
+
+variable "servername" {
+  type = string
+}
+
+variable "init_script_name" {
+  type = string
+}
+
+variable "init_script_envs" {
+  type = map(any)
+}
+
+variable "server_product_code" {
+  type = string
+}

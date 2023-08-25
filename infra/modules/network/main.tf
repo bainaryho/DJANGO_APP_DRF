@@ -20,3 +20,16 @@ resource "ncloud_vpc" "main" {
   name = "tf-vpc-${var.env}"
 }
 
+
+#서버에서 이사옴
+resource "ncloud_subnet" "main" {
+  // ncloud_subnet 리소스 생성
+    vpc_no         = data.ncloud_vpc.main.vpc_no
+    subnet         = cidrsubnet(data.ncloud_vpc.main.ipv4_cidr_block, 8, 1)
+    zone           = "KR-2"
+    network_acl_no = data.ncloud_vpc.main.default_network_acl_no
+    subnet_type    = "PUBLIC"
+    usage_type     = "GEN"
+    name = "lion-tf-sub-${var.env}"
+}
+

@@ -16,37 +16,34 @@ variable "password" {
   type = string
 }
 
-variable "db" {
-  type = string
-}
-
-variable "db_user" {
-  type = string
-}
-
-variable "db_password" {
-  type = string
-  sensitive = true
-}
-
-variable "db_port" {
-  type = string
-  default = "5432"
-}
-
-variable "django_settings_module" {
-  type = string
-}
-
-variable "django_secret" {
-  type = string
-  sensitive = true
-}
-
 variable "env" {
   type = string
 }
 
 variable "vpc_id" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "servername" {
+  type = string
+}
+
+variable "init_script_name" {
+  type = string
+}
+
+variable "init_script_envs" {
+  type = map(any)
+}
+
+variable "server_product_code" {
+  type = string
+}
+
+variable "acg_port_range" {
   type = string
 }
