@@ -10,3 +10,7 @@
 # output "be_instance_no" {
 #   value = ncloud_server.be.instance_no
 # }
+
+output "instance_no" {
+  value = ncloud_server.main.instance_no
+}

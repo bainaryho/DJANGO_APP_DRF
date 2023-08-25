@@ -82,17 +82,3 @@ resource "ncloud_init_script" "main" {
     var.init_script_envs
     )
 }
-
-# {
-#     username = var.username
-#     password = var.password
-#     db = var.db
-#     db_user = var.db_user
-#     db_password = var.db_password
-#     db_port = var.db_port
-#     db_host = ncloud_public_ip.db.public_ip #db의 public_ip가 host
-#     django_settings_module = var.django_settings_module
-#     django_secret = var.django_secret
-#     env = var.env
-#   })
-# }
