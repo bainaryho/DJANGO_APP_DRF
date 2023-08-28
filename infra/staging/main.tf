@@ -2,6 +2,7 @@ terraform {
   backend "local"{
     path = "/Users/rkswl/workspace/terraform_study/states/staging.tfstate"
   }
+  #backend "pg" {}
   
   required_providers {
     ncloud = {
