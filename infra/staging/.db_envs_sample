@@ -1,1 +1,0 @@
-export PG_CONN_STR=dbname://user:passwd@address/terraform_backend?sslmode=disable
