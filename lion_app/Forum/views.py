@@ -83,7 +83,7 @@ class PostViewSet(viewsets.ModelViewSet):
             image_filename = f"{image_id}.{ext}"
             s3.upload_fileobj(image.file, bucket_name, image_filename)
             s3.put_object_acl(
-                ACL="public-read",
+                ACL="public-read",  # 전체 공개
                 Bucket=bucket_name,
                 Key=image_filename,
             )
