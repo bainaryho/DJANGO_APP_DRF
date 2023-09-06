@@ -31,6 +31,7 @@ LOCAL_IP = os.getenv("LOCAL_IP", "")
 ALLOWED_HOSTS = [
     "localhost",
     # LOCAL_IP,
+    "*",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -63,6 +64,7 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE = [
+    "common.middleware.HealthcheckMiddleware"
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

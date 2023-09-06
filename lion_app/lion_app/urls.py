@@ -1,4 +1,5 @@
 from django.contrib import admin
+from ..common import views
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -19,4 +20,5 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-swagger-ui",
     ),
+    # path("health/", views.healthcheck, name="healthcheck"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
