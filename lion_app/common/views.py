@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpResponseServerError
+from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 
 request_count = 0
@@ -13,4 +13,4 @@ def healthcheck(request):
 def get_version(request):
     global request_count
     response_data = {"version": settings.VERSION}
-    return JsonResponse(response_data)
+    return HttpResponse(status=500)
