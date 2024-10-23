@@ -1,5 +1,5 @@
 name: CD using Docker Image
-
+# 지속적 배포 테스트를 통과한 코드는 스테이징 환경에 자동으로 배포됩니다.
 on:
     push:
         branches:

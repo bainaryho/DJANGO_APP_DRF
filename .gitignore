@@ -212,3 +212,6 @@ bash_profile
 infra/aws/users.txt
 scripts/set_be_server.sh
 infra/staging/.db_envs
+
+terraform.tfvars
+production.tfvars
