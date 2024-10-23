@@ -2,6 +2,7 @@ Terraform deploy module in 'infra' directory
 
 IAC to NCP & AWS
 
+```
 LION_DJANGO_APP
 ├─ .actrc
 ├─ .dockerignore
@@ -31,3 +32,4 @@ LION_DJANGO_APP
    ├─ run_gunicorn.sh
    ├─ set_server.sh
    └─ set_user.sh
+```
